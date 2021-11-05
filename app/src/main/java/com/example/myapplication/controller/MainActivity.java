@@ -55,20 +55,20 @@ public class MainActivity extends AppCompatActivity implements Serializable {
             @Override
             public void onClick(View view) {
 
-                if(Grosse_list.universal_list.size()==0){
+                if (Grosse_list.universal_list.size() == 0) {
 
 
                     ArrayList<List_rubriques> list1 = new ArrayList<List_rubriques>();
 
                     list1 = (ArrayList<List_rubriques>) Serializer.deSerialize(file_name, getApplicationContext());
-                    if(!list1.equals(null)){
+                    if (!list1.equals(null)) {
                         Grosse_list.universal_list = list1;
                     }
 
 
                     Intent otherActivity = new Intent(getApplicationContext(), List_rubriques_process.class);
                     startActivity(otherActivity);
-                }else {
+                } else {
                     Intent otherActivity = new Intent(getApplicationContext(), List_rubriques_process.class);
                     startActivity(otherActivity);
                 }
@@ -89,14 +89,16 @@ public class MainActivity extends AppCompatActivity implements Serializable {
         tout_supprimer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                for(List_rubriques rubriques : Grosse_list.universal_list){
-                    Grosse_list.universal_list.remove(rubriques);
+                for (int i = 0; i < Grosse_list.universal_list.size(); i++) {
+
+                    Grosse_list.universal_list.get(i).setValide(false);
+                    Grosse_list.universal_list.remove(i);
+                    finish();
+
                 }
             }
         });
     }
-
-
 
 
 }

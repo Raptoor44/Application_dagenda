@@ -59,9 +59,10 @@ public class Taches_controller extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
 
-           for(List_rubriques rubriques : Grosse_list.universal_list){
-               if(rubriques.isValide()){
-                   Grosse_list.universal_list.remove(rubriques);
+           for(int i = 0 ; i < Grosse_list.universal_list.size() ; i++){
+               if(Grosse_list.universal_list.get(i).isValide()){
+                   Grosse_list.universal_list.get(i).setValide(false);
+                   Grosse_list.universal_list.remove(i);
                    finish();
                }
            }
